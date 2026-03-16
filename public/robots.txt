@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sjvik-labs.stevenjvik.tech/sitemap.xml

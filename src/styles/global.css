@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --color-sjvik-green: #8EC49B;
+  --color-sjvik-green-dark: #6BA37A;
+  --color-sjvik-green-light: #B5D9BE;
+  --color-sjvik-bg: #0D1117;
+  --color-sjvik-surface: #161B22;
+  --color-sjvik-surface-light: #21262D;
+  --color-sjvik-text: #E6EDF3;
+  --color-sjvik-text-muted: #8B949E;
+  --color-sjvik-border: #30363D;
+  --color-sjvik-gold: #D4A843;
+  --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+}

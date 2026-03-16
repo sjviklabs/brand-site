@@ -1,0 +1,76 @@
+---
+const products = [
+  {
+    title: "Proxmox Homelab: Zero to Production",
+    description: "Build a production-grade homelab from scratch. Proxmox clustering, LXC containers, Traefik, monitoring, backups, and security hardening. 131 pages of copy-paste configs and real-world patterns.",
+    price: "$20",
+    tags: ["Proxmox", "LXC", "Monitoring", "Backups"],
+    url: "https://stevenjvik.gumroad.com/l/gxcefj",
+    status: "live"
+  },
+  {
+    title: "SOC Analyst Interview Kit",
+    description: "200+ flashcards, 25 scenarios, Splunk SPL & Sentinel KQL exercises, MITRE ATT&CK mapping, behavioral frameworks, and a mock interview rubric. Everything you need to land the SOC role. 160 pages.",
+    price: "$25",
+    tags: ["SOC", "SIEM", "MITRE", "Interview Prep"],
+    url: "https://stevenjvik.gumroad.com/l/pwemdd",
+    status: "live"
+  },
+  {
+    title: "The Digital DM Guide",
+    description: "Run your D&D campaign like a tech project. Digital session management, AI-powered content pipelines, campaign portals, and encounter tools. From a DM who built the whole stack.",
+    price: "Coming Soon",
+    tags: ["D&D", "AI Tools", "Campaign Mgmt"],
+    url: "#",
+    status: "coming-soon"
+  }
+];
+---
+
+<section id="products" class="py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="mb-12">
+      <p class="font-mono text-sjvik-green text-sm mb-2">// products</p>
+      <h2 class="text-3xl font-bold">Digital Products</h2>
+      <p class="text-sjvik-text-muted mt-2 max-w-xl">Practical guides built from real experience. No fluff, no theory-only content — every page comes from production use.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      {products.map((product) => (
+        <a 
+          href={product.url}
+          target={product.status === "live" ? "_blank" : undefined}
+          rel={product.status === "live" ? "noopener" : undefined}
+          class:list={[
+            "group block rounded-xl border p-6 transition-all duration-200",
+            product.status === "live" 
+              ? "border-sjvik-border bg-sjvik-surface hover:border-sjvik-green hover:-translate-y-1" 
+              : "border-sjvik-border/50 bg-sjvik-surface/50 cursor-default"
+          ]}
+        >
+          <div class="flex items-center justify-between mb-4">
+            <span class:list={[
+              "font-mono text-lg font-bold",
+              product.status === "live" ? "text-sjvik-green" : "text-sjvik-gold"
+            ]}>
+              {product.price}
+            </span>
+            {product.status === "live" && (
+              <span class="text-xs font-mono px-2 py-1 rounded bg-sjvik-green/10 text-sjvik-green">PDF</span>
+            )}
+            {product.status === "coming-soon" && (
+              <span class="text-xs font-mono px-2 py-1 rounded bg-sjvik-gold/10 text-sjvik-gold">In Progress</span>
+            )}
+          </div>
+          <h3 class="text-lg font-semibold mb-3 group-hover:text-sjvik-green transition-colors">{product.title}</h3>
+          <p class="text-sjvik-text-muted text-sm leading-relaxed mb-4">{product.description}</p>
+          <div class="flex flex-wrap gap-2">
+            {product.tags.map((tag) => (
+              <span class="text-xs font-mono px-2 py-1 rounded bg-sjvik-bg text-sjvik-text-muted border border-sjvik-border">{tag}</span>
+            ))}
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
