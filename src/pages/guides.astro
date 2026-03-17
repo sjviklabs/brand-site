@@ -7,8 +7,22 @@ const products = [
   {
     title: "Proxmox Homelab: Zero to Production",
     description: "Build a production-grade homelab from scratch. Proxmox clustering, LXC containers, Traefik, monitoring, backups, and security hardening. 131 pages of copy-paste configs and real-world patterns.",
+    audience: "IT enthusiasts, career changers, and junior DevOps/SRE professionals who want hands-on infrastructure experience they can talk about in interviews.",
     price: "$20",
     pages: "131 pages",
+    chapters: [
+      "Introduction — What this guide is (and isn't)",
+      "Hardware & Planning — Budget builds, node specs, network layout",
+      "Proxmox Installation — Cluster setup from bare metal",
+      "LXC Containers — Templates, networking, resource limits",
+      "Core Services — DNS, Traefik reverse proxy, file sync",
+      "Monitoring & Alerting — Grafana + Prometheus + alerting rules",
+      "Backups & Recovery — PBS + Restic, verification, DR testing",
+      "Security Hardening — SSH, firewalls, fail2ban, least privilege",
+      "Automation & Maintenance — Ansible, cron, day-2 ops",
+      "Advanced Topics — ZFS, Ceph, live migration, GPU passthrough",
+      "Appendix — Quick reference, troubleshooting, version matrix"
+    ],
     tags: ["Proxmox", "LXC", "Traefik", "Grafana", "Monitoring", "Backups", "Security"],
     url: "https://stevenjvik.gumroad.com/l/gxcefj",
     highlights: [
@@ -20,13 +34,48 @@ const products = [
       "Fail2ban, SSH hardening, firewall rules",
       "Ansible automation for repeatable deploys",
       "Chapter checkpoints and interview callouts"
-    ]
+    ],
+    sampleTitle: "Sample: Security Hardening (Chapter 7)",
+    sampleContent: `A homelab without security hardening is a botnet node waiting to happen. It is not a question of <em>if</em> your exposed SSH port gets probed — it is a question of how many times per hour.
+
+<strong>"It is just a homelab"</strong> is the most dangerous sentence in self-hosting. Default passwords, open ports, and unpatched systems are how real breaches start. And the habits you build here are the habits you carry into your career.
+
+<strong>Security Principles:</strong>
+<ol class="list-decimal ml-6 mt-2 space-y-1">
+<li><strong>Least privilege.</strong> Every service, user, and process gets the minimum permissions it needs. Nothing more.</li>
+<li><strong>Defense in depth.</strong> Multiple layers of protection. If one fails, the next catches the threat.</li>
+<li><strong>Assume breach.</strong> Design as if an attacker is already on your network. Limit lateral movement.</li>
+<li><strong>Audit and log.</strong> If you cannot see what happened, you cannot respond to it.</li>
+</ol>
+
+<strong class="block mt-4">SSH Hardening — Key-Only Auth:</strong>
+<pre class="bg-sjvik-bg rounded-lg p-4 mt-2 text-sm overflow-x-auto font-mono text-sjvik-text"><code># Verify on every host
+grep -E "^(PermitRootLogin|PasswordAuthentication)" /etc/ssh/sshd_config
+
+# Lock it down
+sed -i 's/^PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+systemctl restart sshd</code></pre>
+
+<p class="mt-4 text-sjvik-text-muted italic">This is 1 of 11 chapters. The full guide covers firewalls, fail2ban, network segmentation, Proxmox API tokens, encrypted remote access, and more.</p>`
   },
   {
     title: "SOC Analyst Interview Kit",
     description: "200+ flashcards, 25 scenarios, Splunk SPL & Sentinel KQL exercises, MITRE ATT&CK mapping, behavioral frameworks, and a mock interview rubric. Everything you need to land the SOC role. 160 pages.",
+    audience: "Career changers, bootcamp grads, cert holders, and junior analysts who keep hearing 'not enough hands-on experience' in interviews.",
     price: "$25",
     pages: "160 pages",
+    chapters: [
+      "Introduction — Who this is for, how to use it",
+      "Core Concepts — Foundational Q&A review",
+      "Scenario Questions — 25 realistic walkthroughs",
+      "Technical Questions — Deep-dive on protocols, logs, tools",
+      "Behavioral Questions — STAR framework with real examples",
+      "Tools & Technology — Splunk SPL, Sentinel KQL, Wireshark",
+      "Resume & Prep Tips — What interviewers actually look for",
+      "Quick Reference Cards — Printable cheat sheets",
+      "Common Mistakes — Answers that sound right but are wrong",
+      "First 90 Days — Your onboarding playbook"
+    ],
     tags: ["SOC", "SIEM", "Splunk", "Sentinel", "MITRE ATT&CK", "Interview Prep"],
     url: "https://stevenjvik.gumroad.com/l/pwemdd",
     highlights: [
@@ -38,7 +87,27 @@ const products = [
       "Mock interview rubric with scoring guide",
       "\"First 90 days\" onboarding playbook",
       "Common mistakes and answers that sound right but aren't"
-    ]
+    ],
+    sampleTitle: "Sample: Answers That Sound Right But Are Wrong (Chapter 8)",
+    sampleContent: `Every interviewer has heard these. They sound confident. They sound reasonable. And they are either wrong, dangerously incomplete, or a sign that the candidate is reciting buzzwords without understanding the underlying concepts.
+
+<strong class="text-sjvik-gold">"Just block the IP"</strong>
+
+<p class="mt-2"><strong>Question:</strong> "An alert fires showing repeated connection attempts from an external IP to your web server. What do you do?"</p>
+<p class="mt-1"><strong>The "sounds right" answer:</strong> "Block the IP on the firewall."</p>
+<p class="mt-1"><strong>Why it's wrong:</strong> Blocking a single IP is whack-a-mole. Attackers don't use one IP — they use dozens, hundreds, or thousands. More importantly, you skipped the entire investigation. <em>Why</em> were they connecting? Did they succeed? What were they targeting?</p>
+<p class="mt-2"><strong>The better answer:</strong> "I'd first analyze what the attempts were targeting — port, protocol, payload. Check if any succeeded by correlating web server logs, WAF logs, and EDR. Block the IP as short-term containment while investigating, but build a broader detection rule — because the attacker will come back from a different IP. The long-term fix is addressing the vulnerability they were targeting."</p>
+
+<hr class="border-sjvik-border my-6" />
+
+<strong class="text-sjvik-gold">"Encryption means it's secure"</strong>
+
+<p class="mt-2"><strong>Question:</strong> "How do you ensure data is secure in transit?"</p>
+<p class="mt-1"><strong>The "sounds right" answer:</strong> "We encrypt everything with TLS."</p>
+<p class="mt-1"><strong>Why it's wrong:</strong> Encryption protects confidentiality — one property of security. It doesn't protect against a compromised endpoint, a corporate TLS-inspecting proxy, weak cipher suites, or expired certs. "We encrypt everything" is a vague aspiration, not a security control.</p>
+<p class="mt-2"><strong>The better answer:</strong> "TLS in transit is a baseline, but encryption alone isn't sufficient. I'd verify TLS 1.2+ with strong ciphers, valid certificate management, and certificate pinning where appropriate. Plus encryption at rest, key management, and access controls on who can decrypt."</p>
+
+<p class="mt-6 text-sjvik-text-muted italic">This is 2 of 10 "sounds right but wrong" answers. The full chapter covers 10 patterns that tank interviews — including "the SIEM will catch everything," "zero trust means no firewall," and "hash passwords with MD5."</p>`
   }
 ];
 ---
@@ -60,11 +129,11 @@ const products = [
       </div>
 
       <!-- Product Cards -->
-      <div class="space-y-12">
+      <div class="space-y-16">
         {products.map((product) => (
           <div class="rounded-xl border border-sjvik-border bg-sjvik-surface p-8">
             <!-- Title + Price Row -->
-            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
               <div>
                 <h2 class="text-2xl font-bold mb-1">{product.title}</h2>
                 <p class="font-mono text-sm text-sjvik-text-muted">{product.pages} &middot; PDF</p>
@@ -74,21 +143,37 @@ const products = [
               </div>
             </div>
 
+            <!-- Who it's for -->
+            <div class="mb-6 rounded-lg bg-sjvik-bg/50 border border-sjvik-border/50 px-4 py-3">
+              <p class="text-sm"><span class="font-mono text-sjvik-green">Who it's for:</span> <span class="text-sjvik-text-muted">{product.audience}</span></p>
+            </div>
+
             <!-- Description -->
             <p class="text-sjvik-text-muted leading-relaxed mb-6">{product.description}</p>
 
-            <!-- What's Inside -->
+            <!-- Table of Contents -->
             <div class="mb-6">
-              <p class="font-mono text-sjvik-green text-sm mb-3">What's inside:</p>
-              <ul class="grid sm:grid-cols-2 gap-2">
-                {product.highlights.map((item) => (
-                  <li class="flex items-start gap-2 text-sm text-sjvik-text">
-                    <span class="text-sjvik-green mt-0.5 shrink-0">&#10003;</span>
-                    <span>{item}</span>
+              <p class="font-mono text-sjvik-green text-sm mb-3">Table of contents:</p>
+              <ol class="space-y-1">
+                {product.chapters.map((ch, i) => (
+                  <li class="flex items-start gap-3 text-sm text-sjvik-text">
+                    <span class="font-mono text-sjvik-text-muted shrink-0 w-6 text-right">{String(i).padStart(2, '0')}</span>
+                    <span>{ch}</span>
                   </li>
                 ))}
-              </ul>
+              </ol>
             </div>
+
+            <!-- Free Sample Chapter -->
+            <details class="mb-6 group">
+              <summary class="cursor-pointer font-mono text-sm text-sjvik-gold hover:text-sjvik-gold/80 transition-colors flex items-center gap-2">
+                <svg class="w-4 h-4 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                {product.sampleTitle} — Read free, no signup
+              </summary>
+              <div class="mt-4 rounded-lg border border-sjvik-gold/20 bg-sjvik-gold/5 p-6 text-sm leading-relaxed text-sjvik-text space-y-3" set:html={product.sampleContent} />
+            </details>
 
             <!-- Tags -->
             <div class="flex flex-wrap gap-2 mb-6">
@@ -97,29 +182,33 @@ const products = [
               ))}
             </div>
 
-            <!-- CTA Button -->
-            <a
-              href={product.url}
-              target="_blank"
-              rel="noopener"
-              class="inline-flex items-center gap-2 px-6 py-3 bg-sjvik-green text-sjvik-bg font-mono font-semibold rounded-lg hover:bg-sjvik-green-light transition-colors"
-            >
-              Get the Guide
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
+            <!-- CTA Buttons -->
+            <div class="flex flex-wrap gap-3">
+              <a
+                href={product.url}
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center gap-2 px-6 py-3 bg-sjvik-green text-sjvik-bg font-mono font-semibold rounded-lg hover:bg-sjvik-green-light transition-colors"
+              >
+                Get the Guide
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
           </div>
         ))}
       </div>
 
-      <!-- Beta Notice -->
-      <div class="mt-16 rounded-xl border border-sjvik-gold/30 bg-sjvik-gold/5 p-6 text-center">
-        <p class="font-mono text-sjvik-gold text-sm mb-2">// beta program</p>
+      <!-- Beta Notice — rewritten as direct offer -->
+      <div class="mt-16 rounded-xl border border-sjvik-gold/30 bg-sjvik-gold/5 p-6">
+        <p class="font-mono text-sjvik-gold text-sm mb-2">// free beta copies available</p>
+        <p class="text-sjvik-text leading-relaxed mb-3">
+          These guides are in active beta. I'm giving away <strong>free copies</strong> to practitioners who'll give honest feedback. No strings, no email list — just grab it and tell me what you think.
+        </p>
         <p class="text-sjvik-text leading-relaxed">
-          These guides are in beta. If you're a practitioner willing to give honest feedback,
-          <a href="https://www.reddit.com/user/stevenjvik" target="_blank" rel="noopener" class="text-sjvik-green hover:underline">reach out on Reddit</a>
-          for a free review copy.
+          Use code <code class="font-mono bg-sjvik-bg px-2 py-0.5 rounded text-sjvik-green border border-sjvik-border">BETA</code> at checkout for 100% off either guide. Then DM me on
+          <a href="https://www.reddit.com/user/stevenjvik" target="_blank" rel="noopener" class="text-sjvik-green hover:underline">Reddit</a> with your take.
         </p>
       </div>
 
