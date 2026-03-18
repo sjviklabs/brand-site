@@ -33,3 +33,49 @@
   --font-body: "Inter Tight", "Helvetica Neue", sans-serif;
   --font-mono: "JetBrains Mono", "Cascadia Code", monospace;
 }
+
+/* ── Light Mode ── */
+[data-theme="light"] {
+  --color-sjvik-bg: #F1F5F9;
+  --color-sjvik-surface: #FFFFFF;
+  --color-sjvik-surface-light: #E2E8F0;
+  --color-sjvik-text: #0F172A;
+  --color-sjvik-text-dim: #334155;
+  --color-sjvik-text-muted: #64748B;
+  --color-sjvik-border: rgba(148, 163, 184, 0.28);
+  --color-sjvik-green: #059669;
+  --color-sjvik-green-dark: #047857;
+  --color-sjvik-green-light: #10B981;
+  --color-sjvik-accent: #EA580C;
+  --color-sjvik-gold: #EA580C;
+  --color-sjvik-success: #16A34A;
+  --color-sjvik-warning: #D97706;
+  --color-sjvik-danger: #DC2626;
+}
+
+/* ── Theme Toggle Button ── */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  background: none;
+  border: 1px solid var(--color-sjvik-border);
+  border-radius: 0.5rem;
+  color: var(--color-sjvik-text-muted);
+  cursor: pointer;
+  padding: 0.375rem 0.625rem;
+  font-size: 0.75rem;
+  font-family: var(--font-body);
+  transition: color 0.15s, border-color 0.15s;
+}
+.theme-toggle:hover {
+  color: var(--color-sjvik-text);
+  border-color: var(--color-sjvik-green);
+}
+.theme-toggle svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
