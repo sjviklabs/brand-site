@@ -25,6 +25,7 @@ const products = [
     ],
     tags: ["Proxmox", "LXC", "Traefik", "Grafana", "Monitoring", "Backups", "Security"],
     url: "https://stevenjvik.gumroad.com/l/gxcefj",
+    betaUrl: "https://stevenjvik.gumroad.com/l/gxcefj/BETA",
     highlights: [
       "3-node Proxmox cluster setup from bare metal",
       "LXC container templates and best practices",
@@ -161,6 +162,7 @@ systemctl enable --now fail2ban</code></pre>
     ],
     tags: ["SOC", "SIEM", "Splunk", "Sentinel", "MITRE ATT&CK", "Interview Prep"],
     url: "https://stevenjvik.gumroad.com/l/pwemdd",
+    betaUrl: "https://stevenjvik.gumroad.com/l/pwemdd/BETA",
     highlights: [
       "200+ flashcards covering SOC fundamentals",
       "25 realistic scenario walkthroughs",
@@ -307,6 +309,14 @@ systemctl enable --now fail2ban</code></pre>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </a>
+              <a
+                href={product.betaUrl}
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center gap-2 px-6 py-3 border border-sjvik-gold/60 text-sjvik-gold font-mono font-semibold rounded-lg hover:bg-sjvik-gold/10 transition-colors"
+              >
+                Get free beta copy
+              </a>
             </div>
           </div>
         ))}
@@ -318,9 +328,27 @@ systemctl enable --now fail2ban</code></pre>
         <p class="text-sjvik-text leading-relaxed mb-3">
           These guides are in active beta. I'm giving away <strong>free copies</strong> to practitioners who'll give honest feedback. No strings, no email list — just grab it and tell me what you think.
         </p>
-        <p class="text-sjvik-text leading-relaxed">
-          Use code <code class="font-mono bg-sjvik-bg px-2 py-0.5 rounded text-sjvik-green border border-sjvik-border">BETA</code> at checkout for 100% off either guide. Then DM me on
-          <a href="https://www.reddit.com/user/stevenjvik" target="_blank" rel="noopener" class="text-sjvik-green hover:underline">Reddit</a> with your take.
+        <div class="flex flex-wrap gap-3 mb-4">
+          <a
+            href="https://stevenjvik.gumroad.com/l/gxcefj/BETA"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2 px-5 py-2.5 border border-sjvik-gold/60 text-sjvik-gold font-mono text-sm font-semibold rounded-lg hover:bg-sjvik-gold/10 transition-colors"
+          >
+            Free: Proxmox Homelab Guide
+          </a>
+          <a
+            href="https://stevenjvik.gumroad.com/l/pwemdd/BETA"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2 px-5 py-2.5 border border-sjvik-gold/60 text-sjvik-gold font-mono text-sm font-semibold rounded-lg hover:bg-sjvik-gold/10 transition-colors"
+          >
+            Free: SOC Interview Kit
+          </a>
+        </div>
+        <p class="text-sjvik-text-muted text-sm">
+          Discount is pre-applied — no code needed. Then DM me on
+          <a href="https://www.reddit.com/user/stevenjvik" target="_blank" rel="noopener" class="text-sjvik-green hover:underline">Reddit</a> with your feedback.
         </p>
       </div>
 
