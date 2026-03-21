@@ -15,6 +15,13 @@ fi
 echo "==> Building SJVIK Labs landing page..."
 npx astro build
 
+# Copy static assets that live outside the Astro build (beta PDFs, etc.)
+if [[ -d static-assets/beta ]]; then
+  echo "==> Copying beta PDFs into dist/beta/..."
+  mkdir -p dist/beta
+  cp static-assets/beta/* dist/beta/
+fi
+
 echo "==> Build complete: dist/"
 
 if [[ "${1:-}" == "--build-only" ]]; then

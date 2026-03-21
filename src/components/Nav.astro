@@ -1,22 +1,17 @@
 ---
 ---
-<nav class="fixed top-0 w-full z-50 bg-sjvik-bg/30 backdrop-blur-md border-b border-sjvik-border/50">
-  <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-2.5 no-underline">
-      <span class="font-display text-xs font-semibold tracking-wide text-sjvik-text">SJVIK Labs</span>
+<nav class="fixed top-0 w-full z-50 bg-sjvik-bg/80 backdrop-blur-md border-b border-sjvik-border">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3 group">
+      <span class="text-sjvik-green font-mono font-bold text-lg tracking-tight">SJVIK Labs</span>
+      <span class="text-sjvik-green opacity-80 animate-pulse">█</span>
     </a>
-    <div class="flex items-center gap-1">
-      <div class="hidden md:flex items-center gap-1">
-        <a href="#products" class="text-[0.8125rem] font-[450] text-sjvik-text-muted px-3 py-1.5 rounded-lg hover:text-sjvik-text hover:bg-white/[0.06] transition-all">Products</a>
-        <a href="/guides" class="text-[0.8125rem] font-[450] text-sjvik-text-muted px-3 py-1.5 rounded-lg hover:text-sjvik-text hover:bg-white/[0.06] transition-all">Guides</a>
-        <a href="#open-source" class="text-[0.8125rem] font-[450] text-sjvik-text-muted px-3 py-1.5 rounded-lg hover:text-sjvik-text hover:bg-white/[0.06] transition-all">Open Source</a>
-        <a href="#about" class="text-[0.8125rem] font-[450] text-sjvik-text-muted px-3 py-1.5 rounded-lg hover:text-sjvik-text hover:bg-white/[0.06] transition-all">About</a>
-        <a href="https://github.com/stevenjvik" target="_blank" rel="noopener" class="text-[0.8125rem] font-[450] text-sjvik-text-muted px-3 py-1.5 rounded-lg hover:text-sjvik-text hover:bg-white/[0.06] transition-all">GitHub</a>
-      </div>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Theme: auto">
-        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        <span id="theme-label">System</span>
-      </button>
+    <div class="hidden sm:flex items-center gap-8 text-sm font-mono">
+      <a href="#products" class="text-sjvik-text-muted hover:text-sjvik-green transition-colors">Products</a>
+      <a href="/guides" class="text-sjvik-text-muted hover:text-sjvik-green transition-colors">Guides</a>
+      <a href="#open-source" class="text-sjvik-text-muted hover:text-sjvik-green transition-colors">Open Source</a>
+      <a href="#about" class="text-sjvik-text-muted hover:text-sjvik-green transition-colors">About</a>
+      <a href="https://github.com/sjviklabs" target="_blank" rel="noopener" class="text-sjvik-text-muted hover:text-sjvik-green transition-colors">GitHub</a>
     </div>
   </div>
 </nav>
