@@ -34,5 +34,5 @@ jobs:
           username: ${{ secrets.HOSTINGER_USER }}
           password: ${{ secrets.HOSTINGER_PASS }}
           local-dir: ./dist/
-          server-dir: public_html/sjvik-labs/
+          server-dir: domains/stevenjvik.tech/public_html/sjvik-labs/
           dangerous-clean-slate: true
