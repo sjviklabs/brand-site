@@ -11,21 +11,20 @@ const products = [
     price: "$20",
     pages: "131 pages",
     chapters: [
-      "Introduction — What this guide is (and isn't)",
-      "Hardware & Planning — Budget builds, node specs, network layout",
-      "Proxmox Installation — Cluster setup from bare metal",
-      "LXC Containers — Templates, networking, resource limits",
-      "Core Services — DNS, Traefik reverse proxy, file sync",
-      "Monitoring & Alerting — Grafana + Prometheus + alerting rules",
-      "Backups & Recovery — PBS + Restic, verification, DR testing",
-      "Security Hardening — SSH, firewalls, fail2ban, least privilege",
-      "Automation & Maintenance — Ansible, cron, day-2 ops",
-      "Advanced Topics — ZFS, Ceph, live migration, GPU passthrough",
-      "Appendix — Quick reference, troubleshooting, version matrix"
+      "Introduction: What this guide is (and isn't)",
+      "Hardware & Planning: Budget builds, node specs, network layout",
+      "Proxmox Installation: Cluster setup from bare metal",
+      "LXC Containers: Templates, networking, resource limits",
+      "Core Services: DNS, Traefik reverse proxy, file sync",
+      "Monitoring & Alerting: Grafana + Prometheus + alerting rules",
+      "Backups & Recovery: PBS + Restic, verification, DR testing",
+      "Security Hardening: SSH, firewalls, fail2ban, least privilege",
+      "Automation & Maintenance: Ansible, cron, day-2 ops",
+      "Advanced Topics: ZFS, Ceph, live migration, GPU passthrough",
+      "Appendix: Quick reference, troubleshooting, version matrix"
     ],
     tags: ["Proxmox", "LXC", "Traefik", "Grafana", "Monitoring", "Backups", "Security"],
     url: "https://stevenjvik.gumroad.com/l/gxcefj",
-    betaUrl: "https://stevenjvik.gumroad.com/l/gxcefj/BETA",
     highlights: [
       "3-node Proxmox cluster setup from bare metal",
       "LXC container templates and best practices",
@@ -37,11 +36,11 @@ const products = [
       "Chapter checkpoints and interview callouts"
     ],
     sampleTitle: "Sample: Security Hardening (Chapter 7)",
-    sampleContent: `<p>A homelab without security hardening is a botnet node waiting to happen. It is not a question of <em>if</em> your exposed SSH port gets probed — it is a question of how many times per hour.</p>
+    sampleContent: `<p>A homelab without security hardening is a botnet node waiting to happen. It is not a question of <em>if</em> your exposed SSH port gets probed. It is a question of how many times per hour.</p>
 
 <p><strong>"It is just a homelab"</strong> is the most dangerous sentence in self-hosting. Default passwords, open ports, and unpatched systems are how real breaches start. And the habits you build here are the habits you carry into your career. This chapter hardens your lab to a standard that would pass a basic security audit.</p>
 
-<blockquote class="border-l-4 border-amber/40 pl-4 my-4 text-text-variant italic">Common mistake: Assuming your homelab is safe because it is behind a consumer router. NAT is not a firewall. One compromised IoT device, one forwarded port you forgot about, one UPnP rule your router auto-created — and your unpatched Proxmox node is reachable. Harden it anyway.</blockquote>
+<blockquote class="border-l-4 border-amber/40 pl-4 my-4 text-text-variant italic">Common mistake: Assuming your homelab is safe because it is behind a consumer router. NAT is not a firewall. One compromised IoT device, one forwarded port you forgot about, one UPnP rule your router auto-created, and your unpatched Proxmox node is reachable. Harden it anyway.</blockquote>
 
 <h3 class="text-lg font-bold mt-6 mb-2 text-text-primary">Security Principles</h3>
 
@@ -149,20 +148,19 @@ systemctl enable --now fail2ban</code></pre>
     price: "$25",
     pages: "160 pages",
     chapters: [
-      "Introduction — Who this is for, how to use it",
-      "Core Concepts — Foundational Q&A review",
-      "Scenario Questions — 25 realistic walkthroughs",
-      "Technical Questions — Deep-dive on protocols, logs, tools",
-      "Behavioral Questions — STAR framework with real examples",
-      "Tools & Technology — Splunk SPL, Sentinel KQL, Wireshark",
-      "Resume & Prep Tips — What interviewers actually look for",
-      "Quick Reference Cards — Printable cheat sheets",
-      "Common Mistakes — Answers that sound right but are wrong",
-      "First 90 Days — Your onboarding playbook"
+      "Introduction: Who this is for, how to use it",
+      "Core Concepts: Foundational Q&A review",
+      "Scenario Questions: 25 realistic walkthroughs",
+      "Technical Questions: Deep dive on protocols, logs, tools",
+      "Behavioral Questions: STAR framework with real examples",
+      "Tools & Technology: Splunk SPL, Sentinel KQL, Wireshark",
+      "Resume & Prep Tips: What interviewers actually look for",
+      "Quick Reference Cards: Printable cheat sheets",
+      "Common Mistakes: Answers that sound right but are wrong",
+      "First 90 Days: Your onboarding playbook"
     ],
     tags: ["SOC", "SIEM", "Splunk", "Sentinel", "MITRE ATT&CK", "Interview Prep"],
     url: "https://stevenjvik.gumroad.com/l/pwemdd",
-    betaUrl: "https://stevenjvik.gumroad.com/l/pwemdd/BETA",
     highlights: [
       "200+ flashcards covering SOC fundamentals",
       "25 realistic scenario walkthroughs",
@@ -182,9 +180,9 @@ systemctl enable --now fail2ban</code></pre>
 
 <p><strong>The question:</strong> "An alert fires showing repeated connection attempts from an external IP to your web server. What do you do?"</p>
 <p class="mt-2"><strong>The "sounds right" answer:</strong> "I would block the IP on the firewall."</p>
-<p class="mt-2"><strong>Why it is wrong:</strong> Blocking a single IP is whack-a-mole. Attackers do not use one IP — they use dozens, hundreds, or thousands. They rotate through cloud providers, VPNs, compromised hosts, and residential proxies. Blocking one IP gives you approximately 30 seconds of peace before the next one shows up.</p>
-<p class="mt-2">More importantly, you skipped the entire investigation. Why were they connecting? Did they succeed? What were they targeting? Blocking the IP is a containment step — and a weak one at that — not a complete response.</p>
-<p class="mt-2"><strong>The better answer:</strong> "I would first analyze what the connection attempts were targeting — port, protocol, and payload. I would check if any attempts succeeded by correlating with web server access logs, WAF logs, and EDR. If this is an active exploit attempt, I would block the IP as an immediate short-term containment step while investigating, but I would also look at the attack pattern to build a broader detection rule — because the attacker will come back from a different IP. The long-term fix is addressing whatever vulnerability they were targeting."</p>
+<p class="mt-2"><strong>Why it is wrong:</strong> Blocking a single IP is whack-a-mole. Attackers do not use one IP. They use dozens, hundreds, or thousands. They rotate through cloud providers, VPNs, compromised hosts, and residential proxies. Blocking one IP gives you approximately 30 seconds of peace before the next one shows up.</p>
+<p class="mt-2">More importantly, you skipped the entire investigation. Why were they connecting? Did they succeed? What were they targeting? Blocking the IP is a containment step (and a weak one at that), not a complete response.</p>
+<p class="mt-2"><strong>The better answer:</strong> "I would first analyze what the connection attempts were targeting: port, protocol, and payload. I would check if any attempts succeeded by correlating with web server access logs, WAF logs, and EDR. If this is an active exploit attempt, I would block the IP as an immediate short-term containment step while investigating, but I would also look at the attack pattern to build a broader detection rule, because the attacker will come back from a different IP. The long-term fix is addressing whatever vulnerability they were targeting."</p>
 
 <hr class="border-text-dim/20 my-6" />
 
@@ -193,8 +191,8 @@ systemctl enable --now fail2ban</code></pre>
 <p><strong>The question:</strong> "How do you ensure data is secure in transit?"</p>
 <p class="mt-2"><strong>The "sounds right" answer:</strong> "We encrypt everything with TLS, so the data is secure."</p>
 <p class="mt-2"><strong>Why it is wrong:</strong> Encryption protects confidentiality. That is one property of security. It does not protect against a compromised endpoint, a man-in-the-middle with a trusted certificate (like a corporate proxy doing TLS inspection), weak cipher suites, expired certificates, or an attacker who already has the decryption keys.</p>
-<p class="mt-2">Also, "we encrypt everything" is not a security control — it is a vague aspiration. Encrypt with what? TLS 1.0? TLS 1.3? A self-signed cert? AES-256 or DES? The details matter enormously.</p>
-<p class="mt-2"><strong>The better answer:</strong> "TLS encryption in transit is a baseline, but encryption alone is not sufficient. I would verify we are using TLS 1.2 or 1.3 with strong cipher suites, that certificates are valid and properly managed, and that we have certificate pinning where appropriate. I would also consider the endpoints — encryption does not help if the server is compromised. And for sensitive data, I would look at encryption at rest as well, key management practices, and access controls on who can decrypt."</p>
+<p class="mt-2">Also, "we encrypt everything" is not a security control. It is a vague aspiration. Encrypt with what? TLS 1.0? TLS 1.3? A self-signed cert? AES-256 or DES? The details matter enormously.</p>
+<p class="mt-2"><strong>The better answer:</strong> "TLS encryption in transit is a baseline, but encryption alone is not sufficient. I would verify we are using TLS 1.2 or 1.3 with strong cipher suites, that certificates are valid and properly managed, and that we have certificate pinning where appropriate. I would also consider the endpoints. Encryption does not help if the server is compromised. And for sensitive data, I would look at encryption at rest as well, key management practices, and access controls on who can decrypt."</p>
 
 <hr class="border-text-dim/20 my-6" />
 
@@ -202,9 +200,9 @@ systemctl enable --now fail2ban</code></pre>
 
 <p><strong>The question:</strong> "Explain zero trust architecture and how it changes security."</p>
 <p class="mt-2"><strong>The "sounds right" answer:</strong> "Zero trust means we do not trust the network perimeter, so we do not need firewalls anymore. Everything is identity-based."</p>
-<p class="mt-2"><strong>Why it is wrong:</strong> Zero trust does not mean "no perimeter." It means "do not assume the perimeter is enough." Firewalls still have a role — they just are not the only thing standing between you and the bad guys. Zero trust adds identity verification, device posture checks, micro-segmentation, and continuous validation on top of network controls. It is defense in depth, not defense instead of.</p>
+<p class="mt-2"><strong>Why it is wrong:</strong> Zero trust does not mean "no perimeter." It means "do not assume the perimeter is enough." Firewalls still have a role. They just are not the only thing standing between you and the bad guys. Zero trust adds identity verification, device posture checks, micro-segmentation, and continuous validation on top of network controls. It is defense in depth, not defense instead of.</p>
 <p class="mt-2">Saying "we do not need firewalls" in an interview is like saying "we have seatbelts so we do not need brakes." Both do different things. You want both.</p>
-<p class="mt-2"><strong>The better answer:</strong> "Zero trust is a shift from implicit trust based on network location to explicit verification for every access request. It means that being on the corporate network does not automatically grant you access to resources — you still need to authenticate, your device needs to meet security requirements, and access is granted on a least-privilege basis. Firewalls still play a role in network segmentation and blocking known-bad traffic, but they are one layer in a broader architecture that includes identity providers, device management, micro-segmentation, and continuous monitoring."</p>
+<p class="mt-2"><strong>The better answer:</strong> "Zero trust is a shift from implicit trust based on network location to explicit verification for every access request. It means that being on the corporate network does not automatically grant you access to resources. You still need to authenticate, your device needs to meet security requirements, and access is granted on a least-privilege basis. Firewalls still play a role in network segmentation and blocking known-bad traffic, but they are one layer in a broader architecture that includes identity providers, device management, micro-segmentation, and continuous monitoring."</p>
 
 <hr class="border-text-dim/20 my-6" />
 
@@ -214,18 +212,107 @@ systemctl enable --now fail2ban</code></pre>
 
 <p class="mt-2">Almost every wrong answer shares the same flaw: <strong>it jumps to a single action without understanding the full picture.</strong></p>
 
-<p class="mt-2">Block the IP. Disable the account. Restore from backup. These are all actions. Some of them are even correct actions — but taken in isolation, without context, they range from incomplete to actively harmful.</p>
+<p class="mt-2">Block the IP. Disable the account. Restore from backup. These are all actions. Some of them are even correct actions, but taken in isolation, without context, they range from incomplete to actively harmful.</p>
 
-<p class="mt-2">What interviewers are looking for — and what separates a good analyst from a button-pusher — is the ability to <em>think in systems</em>. Every action has dependencies, side effects, and assumptions. When you are in an interview and a quick, confident answer pops into your head, pause for two seconds and ask yourself: <strong>"What am I not thinking about?"</strong></p>
+<p class="mt-2">What interviewers are looking for, and what separates a good analyst from a button-pusher, is the ability to <em>think in systems</em>. Every action has dependencies, side effects, and assumptions. When you are in an interview and a quick, confident answer pops into your head, pause for two seconds and ask yourself: <strong>"What am I not thinking about?"</strong></p>
 
-<p class="mt-6 text-text-variant italic">This is 3 of 10 "sounds right but wrong" patterns. The full chapter continues with "hash passwords with MD5," "the SIEM will catch everything," "disable the user account immediately," "we use antivirus so we are protected," and more — plus a full mock interview scoring rubric with 30 practice questions across 3 simulated rounds.</p>`
+<p class="mt-6 text-text-variant italic">This is 3 of 10 "sounds right but wrong" patterns. The full chapter continues with "hash passwords with MD5," "the SIEM will catch everything," "disable the user account immediately," "we use antivirus so we are protected," and more, plus a full mock interview scoring rubric with 30 practice questions across 3 simulated rounds.</p>`
+  },
+  {
+    title: "The Claude Code Field Manual",
+    description: "17 chapters covering CLAUDE.md architecture, custom skills, hooks, workflow blueprints, multi-agent orchestration, and cost optimization. Plus 21 production-ready template files you can drop in and start using.",
+    audience: "Claude Code users who are past the basics and want to stop spending more time configuring than building.",
+    price: "$19",
+    pages: "17 chapters + 21 templates",
+    chapters: [
+      "The Three Layers: How CLAUDE.md actually works",
+      "Writing Rules Claude Follows: Imperatives, not suggestions",
+      "Directory-Level Overrides: Scoped rules for monorepos",
+      "Skill Anatomy: How skills actually work",
+      "Building a Skill in 5 Minutes: From scratch to firing",
+      "Skill Patterns That Work: The patterns worth copying",
+      "Hooks: Catching Dangerous Commands",
+      "Hook Patterns: Automation without friction",
+      "The Solo Ship: One person, full stack, maximum output",
+      "The Team Relay: Multi-developer workflows",
+      "The Content Machine: Writing, docs, and publishing",
+      "The Review Loop: Code review that catches real bugs",
+      "The Migration March: Large-scale refactoring",
+      "Multi-Agent Orchestration: When and why",
+      "Memory Systems: Persistent context across sessions",
+      "Security Hardening: Keeping Claude safe in production",
+      "Cost Optimization: Getting more from every token"
+    ],
+    tags: ["Claude Code", "CLAUDE.md", "AI Workflow", "Skills", "Hooks", "Templates"],
+    url: "https://stevenjvik.gumroad.com/l/qdjszj",
+    highlights: [
+      "Three-layer CLAUDE.md architecture",
+      "Skill triggers that actually fire",
+      "Hook configs for safety and automation",
+      "5 complete workflow blueprints",
+      "10 role-specific CLAUDE.md templates",
+      "8 drop-in skill files",
+      "3 hook configurations",
+      "Multi-agent and memory patterns"
+    ]
+  },
+  {
+    title: "Prompt Engineering for Code Preservation",
+    description: "20 copy-paste prompt templates that stop Claude from rewriting code you didn't ask it to change. Plus a guide explaining why it happens and how to prevent it permanently with CLAUDE.md rules.",
+    audience: "Anyone who has asked Claude to fix one thing and gotten twenty changes back. The most common complaint in every Claude Code community, solved.",
+    price: "$12",
+    pages: "20 templates + guide",
+    chapters: [
+      "Why Claude Rewrites Your Code: The three causes",
+      "Surgical Fix Templates: Change one thing, nothing else",
+      "Bounded Modification Templates: Protect surrounding code",
+      "Additive Change Templates: New code without touching old",
+      "Review and Verify Templates: Check before changing",
+      "CLAUDE.md Rules: Permanent protection you set once",
+      "Recovery Templates: When Claude already changed too much",
+      "Before and After Examples: Vague vs precise prompts"
+    ],
+    tags: ["Prompt Engineering", "Code Preservation", "Claude Code", "Templates"],
+    url: "https://stevenjvik.gumroad.com/l/kmbkfy",
+    highlights: [
+      "20 copy-paste prompt templates",
+      "6 scenario categories",
+      "Drop-in CLAUDE.md preservation rules",
+      "Before/after prompt comparisons",
+      "The one habit that prevents every unwanted rewrite"
+    ]
+  },
+  {
+    title: "Claude Code for DevOps Engineers",
+    description: "CLAUDE.md configs, skills, and hooks built for infrastructure work. Health checks, runbook generation, deployment verification, and autonomous agent patterns from a real 3-node Proxmox homelab.",
+    audience: "DevOps engineers, SREs, and homelab builders who use Claude Code (or want to) and are tired of guides written for web developers.",
+    price: "$15",
+    pages: "Guide + 8 templates",
+    chapters: [
+      "DevOps CLAUDE.md Architecture: Global identity + project inventory",
+      "Infrastructure Skills: Health checks, runbooks, deployments",
+      "Monitoring Integration: Teaching Claude to query Prometheus and Grafana",
+      "Multi-Node Orchestration: Parallel checks, rolling updates",
+      "The Autonomous Agent Pattern: 7 agents, heartbeat scheduling, the Garrison system"
+    ],
+    tags: ["DevOps", "Infrastructure", "Homelab", "Proxmox", "SRE", "Monitoring", "Automation"],
+    url: "https://stevenjvik.gumroad.com/l/rzesi",
+    highlights: [
+      "Global CLAUDE.md with infrastructure safety rules",
+      "Health check skill (multi-node reporting)",
+      "Runbook generator skill",
+      "Deploy skill with verification",
+      "Safety hooks for destructive commands",
+      "SRE and DevOps autonomous agent configs",
+      "Real Garrison system patterns"
+    ]
   }
 ];
 ---
 
 <Layout
-  title="Guides — SJVIK Labs"
-  description="Practical PDF guides for cybersecurity professionals and homelab builders. Built from real production experience."
+  title="Guides, SJVIK Labs"
+  description="Practical PDF guides for cybersecurity professionals, homelab builders, and Claude Code power users. Built from real production experience."
 >
   <Nav />
   <main class="pt-24 pb-16 px-6 relative bg-base">
@@ -235,7 +322,7 @@ systemctl enable --now fail2ban</code></pre>
         <p class="font-mono text-emerald text-sm mb-3">// guides</p>
         <h1 class="text-4xl sm:text-5xl font-bold mb-4">Practical Guides</h1>
         <p class="text-text-variant text-lg max-w-2xl mx-auto">
-          No fluff, no theory-only content. Every page comes from production experience — real configs, real patterns, real lessons learned.
+          No fluff, no theory-only content. Every page comes from production experience. Real configs, real patterns, real lessons learned.
         </p>
       </div>
 
@@ -276,18 +363,20 @@ systemctl enable --now fail2ban</code></pre>
             </div>
 
             <!-- Free Sample Chapter -->
-            <details class="mb-6 group" open>
-              <summary class="cursor-pointer font-mono text-amber text-sm mb-3 flex items-center gap-2 select-none hover:text-amber/80 transition-colors list-none [&::-webkit-details-marker]:hidden">
-                <svg class="w-4 h-4 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
-                {product.sampleTitle} — Read free, no signup
-              </summary>
-              <div class="mt-3 rounded-lg border border-amber/30 p-6 text-base leading-relaxed text-text-primary space-y-3" class="bg-lowest" set:html={product.sampleContent} />
-            </details>
+            {product.sampleContent && (
+              <details class="mb-6 group" open>
+                <summary class="cursor-pointer font-mono text-amber text-sm mb-3 flex items-center gap-2 select-none hover:text-amber/80 transition-colors list-none [&::-webkit-details-marker]:hidden">
+                  <svg class="w-4 h-4 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                  {product.sampleTitle}, read free, no signup
+                </summary>
+                <div class="mt-3 rounded-lg border border-amber/30 p-6 text-base leading-relaxed text-text-primary space-y-3" class="bg-lowest" set:html={product.sampleContent} />
+              </details>
+            )}
 
             <!-- Tags -->
             <div class="flex flex-wrap gap-2 mb-6">
@@ -298,57 +387,39 @@ systemctl enable --now fail2ban</code></pre>
 
             <!-- CTA Buttons -->
             <div class="flex flex-wrap gap-3">
-              <a
-                href={product.url}
-                target="_blank"
-                rel="noopener"
-                class="inline-flex items-center gap-2 px-6 py-3 cta-gradient text-white font-mono font-semibold rounded-lg hover:cta-gradient-light transition-colors"
-              >
-                Get the Guide
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </a>
-              <a
-                href={product.betaUrl}
-                target="_blank"
-                rel="noopener"
-                class="inline-flex items-center gap-2 px-6 py-3 border border-amber/60 text-amber font-mono font-semibold rounded-lg hover:bg-amber/10 transition-colors"
-              >
-                Get free beta copy
-              </a>
+              {product.url !== "URL_PENDING" ? (
+                <a
+                  href={product.url}
+                  target="_blank"
+                  rel="noopener"
+                  class="inline-flex items-center gap-2 px-6 py-3 cta-gradient text-white font-mono font-semibold rounded-lg hover:cta-gradient-light transition-colors"
+                >
+                  Get the Guide
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </a>
+              ) : (
+                <span class="inline-flex items-center gap-2 px-6 py-3 border border-emerald/30 text-emerald font-mono font-semibold rounded-lg">
+                  Coming soon
+                </span>
+              )}
             </div>
           </div>
         ))}
       </div>
 
-      <!-- Beta Notice — rewritten as direct offer -->
-      <div class="mt-16 rounded-xl border border-amber/40 p-6" class="bg-layer-1">
-        <p class="font-mono text-amber text-sm mb-2">// free beta copies available</p>
+      <!-- Note -->
+      <div class="mt-16 rounded-xl border border-text-dim/20 p-6" class="bg-layer-1">
+        <p class="font-mono text-emerald text-sm mb-2">// a note on pricing</p>
         <p class="text-text-primary leading-relaxed mb-3">
-          These guides are in active beta. I'm giving away <strong>free copies</strong> to practitioners who'll give honest feedback. No strings, no email list — just grab it and tell me what you think.
+          The cybersecurity and homelab guides launched in beta with a free discount code so early readers could kick the tires and give honest feedback. 42 people grabbed copies. A few sent notes about what worked and what didn't. That feedback made the guides better.
         </p>
-        <div class="flex flex-wrap gap-3 mb-4">
-          <a
-            href="https://stevenjvik.gumroad.com/l/gxcefj/BETA"
-            target="_blank"
-            rel="noopener"
-            class="inline-flex items-center gap-2 px-5 py-2.5 border border-amber/60 text-amber font-mono text-sm font-semibold rounded-lg hover:bg-amber/10 transition-colors"
-          >
-            Free: Proxmox Homelab Guide
-          </a>
-          <a
-            href="https://stevenjvik.gumroad.com/l/pwemdd/BETA"
-            target="_blank"
-            rel="noopener"
-            class="inline-flex items-center gap-2 px-5 py-2.5 border border-amber/60 text-amber font-mono text-sm font-semibold rounded-lg hover:bg-amber/10 transition-colors"
-          >
-            Free: SOC Interview Kit
-          </a>
-        </div>
+        <p class="text-text-primary leading-relaxed mb-3">
+          The beta period is over. All guides are at full price now. If you grabbed a free copy and found it useful, leaving a rating on Gumroad is the best way to pay it forward.
+        </p>
         <p class="text-text-variant text-sm">
-          Discount is pre-applied — no code needed. Then DM me on
-          <a href="https://www.reddit.com/user/stevenjvik" target="_blank" rel="noopener" class="text-emerald hover:underline">Reddit</a> with your feedback.
+          No email list, no upsell. Read the free sample chapters on the cybersecurity and homelab guides, then decide.
         </p>
       </div>
 
