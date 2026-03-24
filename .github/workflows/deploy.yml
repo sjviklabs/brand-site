@@ -1,0 +1,38 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build
+        run: npx astro build
+
+      - name: Copy beta PDFs into dist
+        run: |
+          if [ -d static-assets/beta ]; then
+            mkdir -p dist/beta
+            cp static-assets/beta/* dist/beta/
+          fi
+
+      - name: Deploy to Hostinger via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.stevenjvik.tech
+          username: ${{ secrets.HOSTINGER_USER }}
+          password: ${{ secrets.HOSTINGER_PASS }}
+          local-dir: ./dist/
+          server-dir: sjvik-labs/
+          dangerous-clean-slate: true
